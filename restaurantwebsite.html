@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .menu-container {
+            width: 70%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            flex: 1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .menu-buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .menu-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .menu-content.active {
+            display: block;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .item-price {
+            color: #000;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .item-quantity {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .item-quantity input {
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .calculate-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+        .calculate-button.show {
+            display: block; /* Show when needed */
+        }
+        .calculate-button:hover {
+            background-color: #218838;
+        }
+        .receipt-container {
+            width: 25%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: fixed;
+            right: 0;
+            top: 20px;
+        }
+        .receipt-container h2 {
+            text-align: center;
+        }
+        .receipt-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="menu-container">
+        <div class="header">
+            <h1>RESTAURANT MENU</h1>
+        </div>
+        <div class="menu-buttons">
+            <button onclick="showMenu('breakfast')">Breakfast</button>
+            <button onclick="showMenu('lunch')">Lunch</button>
+            <button onclick="showMenu('snacks')">Snacks</button>
+            <button onclick="showMenu('dinner')">Dinner</button>
+            <button onclick="showMenu('beverages')">Beverages</button>
+            <button onclick="showMenu('icecreams')">Ice Creams</button>
+        </div>
+        <img src="restaurant.png" alt="Restaurant Image" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;">
+
+        <div id="breakfast" class="menu-content">
+            <h2>Breakfast</h2>
+            <ul>
+                <li>
+                    Idli <span class="item-price"> ₹30.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Idli" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Dosa <span class="item-price">₹25.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Dosa" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Poha <span class="item-price">₹40.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Poha" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Mysore Bonda <span class="item-price">₹25.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-MysoreBonda" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Upma <span class="item-price">₹30.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Upma" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Vada <span class="item-price">20.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Vada" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="lunch" class="menu-content">
+            <h2>Lunch</h2>
+            <ul>
+                <li>
+                    Meals <span class="item-price"> ₹100.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Meals" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Egg Biryani <span class="item-price">₹125.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Eggbiryani" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Chicken Biryani <span class="item-price">₹150.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Chickenbiryani" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Egg Fried Rice <span class="item-price">₹110.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Eggfriedrice" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Chicken Fried Rice <span class="item-price">₹120.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Chickenfriedrice" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Mushroom Biryani <span class="item-price">170.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Mushroombiryani" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="snacks" class="menu-content">
+            <h2>Snacks</h2>
+            <ul>
+                <li>
+                    Bhel Puri <span class="item-price"> ₹30.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Bhelpuri" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Samosa <span class="item-price">₹25.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Samosa" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Pani Puri <span class="item-price">₹40.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Panipuri" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="dinner" class="menu-content">
+            <h2>Dinner</h2>
+            <ul>
+                <li>
+                    Gobi Manchurian <span class="item-price"> ₹60.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Gobimanchurian" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Mattar Paneer <span class="item-price">₹75.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Mattarpaneer" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Roti+Curry <span class="item-price">₹85.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Roticurry" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Butter Naan+Curry <span class="item-price">95.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Naancurry" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="beverages" class="menu-content">
+            <h2>Beverages</h2>
+            <ul>
+                <li>
+                   Lemonade <span class="item-price"> 15.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Lemonade" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Apple Juice <span class="item-price">₹40.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Applejuice" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Grape Juice<span class="item-price">50.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Grapejuice" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Sprite <span class="item-price">20.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Sprite" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Chocolate Milkshake <span class="item-price">70.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Chocolatemilkshake" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="icecreams" class="menu-content">
+            <h2>Ice Creams</h2>
+            <ul>
+                <li>
+                   Vanilla <span class="item-price"> 20.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Vanilla" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    StrawBerry <span class="item-price">40.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Strawberry" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Butter Scotch<span class="item-price">30.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Butterscotch" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+                <li>
+                    Mint Chocolate Chip  <span class="item-price">45.00</span>
+                    <div class="item-quantity">
+                        <input type="number" id="quantity-Mintchocolatechip" placeholder="Quantity" min="1">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <button class="calculate-button" id="calculate-button" onclick="calculateFinalCost()">Calculate Final Cost</button>
+    </div>
+
+    <div class="receipt-container" id="receipt-container" style="display: none;">
+        <h2>Receipt</h2>
+        <b>Items Purchased:</b>
+        <br>
+        <br>
+        <div id="receipt-content"></div>
+        <b>Payment Mode:</b>Cash
+        <br>
+        <br>
+        <b><center>Thanks for visiting!</center></b>
+        <br>
+        <b><center>Have a good day!</center></b>
+        
+    </div>
+
+    <script>
+        const costs = {};
+    
+        function showMenu(menuId) {
+            const menus = document.querySelectorAll('.menu-content');
+            menus.forEach(menu => {
+                if (menu.id === menuId) {
+                    menu.classList.add('active');
+                    document.getElementById('calculate-button').classList.add('show');
+                } else {
+                    menu.classList.remove('active');
+                }
+            });
+        }
+    
+        function calculateFinalCost() {
+            const items = [
+                {name: 'Idli', price: 30.00},
+                {name: 'Dosa', price: 25.00},
+                {name: 'Poha', price: 40.00},
+                {name: 'MysoreBonda', price: 25.00},
+                {name: 'Upma', price: 30.00},
+                {name: 'Vada', price: 20.00},
+                {name: "Meals", price: 100.00},
+                {name: "Eggbiryani", price: 125.00},
+                {name: "Chickenbiryani", price: 150.00},
+                {name: "Eggfriedrice", price: 110.00},
+                {name: "Chickenfriedrice", price: 120.00},
+                {name: "Mushroombiryani", price: 170.00},
+                {name: "Bhelpuri", price: 30.00},
+                {name: "Samosa", price: 25.00},
+                {name: "Panipuri", price: 40.00},
+                {name: "Gobimanchurian", price: 60.00},
+                {name: "Mattarpaneer", price: 75.00},
+                {name: "Roti+curry", price: 85.00},
+                {name: "Naan+curry", price: 95.00},
+                {name: "Lemonade", price: 15.00},
+                {name: "Applejuice", price: 40.00},
+                {name: "Grapejuice", price: 50.00},
+                {name: "Sprite", price: 20.00},
+                {name: "Chocolatemilkshake", price: 70.00},
+                {name: "Vanilla", price: 20.00},
+                {name: "Strawberry", price: 40.00},
+                {name: "Butterscotch", price: 30.00},
+                {name: "Mintchocolatechip", price: 45.00},
+            ];
+    
+            let totalCost = 0;
+            let receiptContent = '';
+
+    
+            items.forEach(item => {
+                const quantityInput = document.getElementById(`quantity-${item.name.replace(/ /g, '')}`);
+                if (quantityInput) {
+                    const quantity = parseInt(quantityInput.value) || 0;
+                    if (quantity > 0) {
+                        const cost = item.price * quantity;
+                        totalCost += cost;
+                        receiptContent += `<div class="receipt-item">${item.name}: ₹${cost.toFixed(2)}</div>`;
+                    }
+                }
+            });
+            const tax = 0.15 * totalCost; 
+            const finalTotalCost = totalCost + tax;
+            receiptContent += `<div class="receipt-item"><b>Total</b>: ₹${totalCost.toFixed(2)}</div>`;
+            receiptContent += `<div class="receipt-item"><b>Taxes(GST)</b>: ₹${tax.toFixed(2)}</div>`;
+            receiptContent += `<div class="receipt-item"><b>Grand-Total</b>: ₹${finalTotalCost.toFixed(2)}</div>`;
+            
+            document.getElementById('receipt-content').innerHTML = receiptContent;
+            document.getElementById('receipt-container').style.display = 'block';
+        }
+    </script>
+    
+</body>
+</html>
