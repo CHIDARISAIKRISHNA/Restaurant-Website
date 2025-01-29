@@ -18,15 +18,10 @@ An interactive, responsive web application built with HTML, CSS, and JavaScript 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/restaurant-ordering-system.git
+    git clone https://github.com/CHIDARISAIKRISHNA/Restaurant_Website
     ```
 
-2. Navigate to the project directory:
-    ```bash
-    cd restaurant-ordering-system
-    ```
-
-3. Open `index.html` in your browser to view the website locally.
+2. Open `index.html` in your browser to view the website locally.
 
 ## How It Works
 
