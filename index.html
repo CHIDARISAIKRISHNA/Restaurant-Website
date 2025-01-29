@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div class="menu-container">
+            <div class="header">
+                <h1>RESTAURANT MENU</h1>
+            </div>
+            <div class="menu-buttons">
+                <button onclick="showMenu('breakfast')">Breakfast</button>
+                <button onclick="showMenu('lunch')">Lunch</button>
+                <button onclick="showMenu('snacks')">Snacks</button>
+                <button onclick="showMenu('dinner')">Dinner</button>
+                <button onclick="showMenu('beverages')">Beverages</button>
+                <button onclick="showMenu('icecreams')">Ice Creams</button>
+            </div>
+            <div id="menu-content" class="menu-content"></div>
+            <button class="calculate-button" id="calculate-button" onclick="calculateFinalCost()">Calculate Final Cost</button>
+        </div>
+        <div class="receipt-container" id="receipt-container">
+            <h2>Receipt</h2>
+            <div id="receipt-content"></div>
+            <b>Payment Mode:</b> Cash
+            <br><br>
+            <b><center>Thanks for visiting!</center></b>
+            <br>
+            <b><center>Have a good day!</center></b>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
