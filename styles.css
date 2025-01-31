@@ -236,3 +236,16 @@ body {
         font-size: 16px;
     }
 }
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-family:'Times New Roman', Times, serif;
+    width: 100%;
+    font-size: 18px;
+    margin-top: auto;  
+}
+footer p {
+    margin: 0;
+}
