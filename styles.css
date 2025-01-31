@@ -135,7 +135,7 @@ body {
 }
 @media (max-width: 1200px) {
     .menu-container {
-        max-width: 600px;
+        max-width: 700px;
         padding: 20px;
     }
  .header
@@ -164,16 +164,16 @@ body {
         padding: 15px;
     }
     .menu-container {
-        width: 100%;
+        width: 130%;
         max-width: none;
     }
     .receipt-container {
-        width: 100%;
+        width: 130%;
         margin-left: 0;
         margin-top: 20px;
     }
     .menu-buttons button {
-        width: 100%;
+        width: 130%;
         padding: 14px;
         font-size: 18px;
     }
