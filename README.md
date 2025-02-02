@@ -30,11 +30,11 @@ For macOS:
   ```bash
  open index.html
 ```
- For Linux:
+For Linux:
   ```bash
  xdg-open index.html
 ```
- For Windows:
+For Windows:
   ```bash
 start index.html
 
