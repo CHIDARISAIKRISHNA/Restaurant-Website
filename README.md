@@ -18,7 +18,7 @@ An interactive, responsive web application built with HTML, CSS, and JavaScript 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/CHIDARISAIKRISHNA/Restaurant_Website
+    git clone https://github.com/CHIDARISAIKRISHNA/Restaurant-Website
     ```
 
 2. Navigate to the Project Folder:
