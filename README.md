@@ -23,7 +23,7 @@ An interactive, responsive web application built with HTML, CSS, and JavaScript 
 
 2. Navigate to the Project Folder:
 ```bash
-  cd Restaurant-Website
+cd Restaurant-Website
 ```
 3. Open the Project
 To open the index.html file, run the following command based on your operating system:<br>
