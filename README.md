@@ -21,7 +21,25 @@ An interactive, responsive web application built with HTML, CSS, and JavaScript 
     git clone https://github.com/CHIDARISAIKRISHNA/Restaurant_Website
     ```
 
-2. Open `index.html` in your browser to view the website locally.
+2. Navigate to the Project Folder:
+```bash
+  cd Restaurant-Website
+```
+3. Open the Project
+To open the index.html file, run the following command based on your operating system:<br>
+ For macOS:
+  ```bash
+ open index.html
+```
+ For Linux:
+  ```bash
+ xdg-open index.html
+```
+ For Windows:
+  ```bash
+start index.html
+
+```
 
 ## How It Works
 
