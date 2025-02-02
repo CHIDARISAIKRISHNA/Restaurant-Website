@@ -25,7 +25,7 @@ An interactive, responsive web application built with HTML, CSS, and JavaScript 
 ```bash
 cd Restaurant-Website
 ```
-3. Open the Project:<br>
+3. Open the Project:<br><br>
  For macOS:
   ```bash
  open index.html
